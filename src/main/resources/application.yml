@@ -1,0 +1,7 @@
+grpc:
+  client:
+    grpc-server:
+      address: 'static://127.0.0.1:9898'
+      enableKeepAlive: true
+      keepAliveWithoutCalls: true
+      negotiationType: plaintext
