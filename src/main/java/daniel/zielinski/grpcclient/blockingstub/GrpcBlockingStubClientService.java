@@ -1,4 +1,4 @@
-package daniel.zielinski.grpcclient;
+package daniel.zielinski.grpcclient.blockingstub;
 
 import daniel.zielinski.grpc.HelloGrpc;
 import daniel.zielinski.grpc.HelloReply;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class GrpcClientService {
+public class GrpcBlockingStubClientService {
 
     @GrpcClient("grpc-server")
     private HelloGrpc.HelloBlockingStub simpleStub;
