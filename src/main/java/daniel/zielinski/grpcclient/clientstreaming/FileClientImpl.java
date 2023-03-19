@@ -29,6 +29,8 @@ public class FileClientImpl implements FileClient {
 
     private final StreamObserver<FileUploadResponse> fileUploadObserver;
 
+    private final int CHUNK_SIZE = 4096;
+
     @Override
     public void sendFile(String filePath) throws IOException {
 
@@ -43,7 +45,7 @@ public class FileClientImpl implements FileClient {
         streamObserver.onNext(metadata);
 
         try (InputStream inputStream = Files.newInputStream(path)) {
-            byte[] bytes = new byte[4096];
+            byte[] bytes = new byte[CHUNK_SIZE];
             int size;
             while ((size = inputStream.read(bytes)) > 0) {
                 FileUploadRequest uploadRequest = FileUploadRequest.newBuilder()
