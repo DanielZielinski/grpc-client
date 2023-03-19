@@ -14,11 +14,11 @@ import java.io.IOException;
 @RequiredArgsConstructor
 public class ClientFileUploadController {
 
-    private final GrpcStreamingClientService grpcStreamingClientService;
+    private final FileClient fileClient;
 
     @PostMapping
     public ResponseEntity<Void> uploadFile(@RequestParam String filePath) throws IOException {
-        grpcStreamingClientService.sendFile(filePath);
+        fileClient.sendFile(filePath);
         return ResponseEntity.ok().build();
     }
 }

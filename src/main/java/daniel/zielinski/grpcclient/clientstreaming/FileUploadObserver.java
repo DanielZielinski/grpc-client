@@ -3,13 +3,15 @@ package daniel.zielinski.grpcclient.clientstreaming;
 import daniel.zielinski.grpc.FileUploadResponse;
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 @Slf4j
+@Service
 public class FileUploadObserver implements StreamObserver<FileUploadResponse> {
 
     @Override
     public void onNext(FileUploadResponse fileUploadResponse) {
-        log.info("Status {}", fileUploadResponse.getStatus());
+        log.info("File upload status {}", fileUploadResponse.getStatus());
     }
 
     @Override
@@ -19,7 +21,7 @@ public class FileUploadObserver implements StreamObserver<FileUploadResponse> {
 
     @Override
     public void onCompleted() {
-        log.info("File uploaded successfully");
+        log.info("File upload completed");
     }
 
 }
